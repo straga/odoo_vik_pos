@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<openerp>
+    <data>
+        <report
+            id="pos_lines_detail_ext"
+            string="Details of Sales Ext."
+            model="pos.order"
+            report_type="qweb-pdf"
+            name="pos_report_details.report_detailsofsales_ext"
+            file="pos_report_details.report_detailsofsales_ext"
+            menu="False"
+         />
+
+    </data>
+</openerp>

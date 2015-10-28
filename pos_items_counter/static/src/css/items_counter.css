@@ -1,0 +1,44 @@
+/* --- pos line Specific CSS --- */
+
+
+.polines {
+
+    float: left;
+    font-size: 16px;
+    text-align: left;
+    font-weight: bold;
+
+    position:relative;
+
+    left: 15px;
+    bottom:   -20px;
+
+    border-top: 2px solid #777;
+    border-color: #777;
+
+}
+
+
+.polines.emp {
+
+    float: left;
+
+    font-size: 16px;
+    text-align: left;
+    font-weight: bold;
+
+    position:relative;
+
+    left: 15px;
+    bottom:   -20px;
+
+    color: #999;
+
+    border-top: 2px solid #777;
+    border-color: #BBB;
+
+
+}
+
+
+

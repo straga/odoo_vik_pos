@@ -1,0 +1,67 @@
+<openerp>
+    <data>
+        <!-- <template id="listing"> -->
+        <!--   <ul> -->
+        <!--     <li t-foreach="objects" t-as="object"> -->
+        <!--       <a t-attf-href="#{ root }/objects/#{ object.id }"> -->
+        <!--         <t t-esc="object.display_name"/> -->
+        <!--       </a> -->
+        <!--     </li> -->
+        <!--   </ul> -->
+        <!-- </template> -->
+        <!-- <template id="object"> -->
+        <!--   <h1><t t-esc="object.display_name"/></h1> -->
+        <!--   <dl> -->
+        <!--     <t t-foreach="object._fields" t-as="field"> -->
+        <!--       <dt><t t-esc="field"/></dt> -->
+        <!--       <dd><t t-esc="object[field]"/></dd> -->
+        <!--     </t> -->
+        <!--   </dl> -->
+        <!-- </template> -->
+
+        <record id="product_ext_view_tree_view" model="ir.ui.view">
+            <field name="name">product.template.product.ext.tree.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+<!--
+                <xpath expr="//field[@name='type']" position= "replace">
+                 	               <field name="type"  invisible="1"/>
+
+
+
+                 </xpath>
+
+                <field name="categ_id" position="after">
+                    <field name="type"  invisible="1"/>
+                    <field name="state" invisible="1"/>
+                    <field name="pos_categ_id"/>
+
+                </field>
+                -->
+                <field name="type" position="replace">
+                    <field name="type"  invisible="1"/>
+                </field>
+                <field name="state" position="replace">
+                    <field name="state"  invisible="1"/>
+                </field>
+
+                <field name="categ_id" position="after">
+                    <field name="pos_categ_id" />
+                    <field name="list_price" />
+                    <field name="create_date" />
+
+                </field>
+
+
+
+
+
+            </field>
+        </record>
+
+
+
+
+    </data>
+</openerp>

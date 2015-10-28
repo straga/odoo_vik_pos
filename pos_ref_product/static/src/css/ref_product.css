@@ -1,0 +1,18 @@
+/* --- pos Specific CSS --- */
+
+.pos .product .ref-tag {
+    position: absolute;
+    bottom: 10px;
+    left: 2px;
+    vertical-align: top;
+    color: white;
+    line-height: 13px;
+    background: #7f82ac;
+    padding: 2px 5px;
+    border-radius: 2px;
+	font-weight: bold;
+}
+
+
+
+

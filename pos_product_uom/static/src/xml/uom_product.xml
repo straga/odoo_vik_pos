@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+
+	<t t-extend="Product">
+
+			<t t-jquery=".price-tag" t-operation="inner">
+				<t t-if="!product.to_weight">
+                        <t t-esc="widget.format_currency(product.price,'Product Price')"/>
+				</t>
+
+				<t t-if="product.to_weight">
+
+                        <t t-esc="widget.format_currency(product.price,'Product Price')+'/Lbs'"/>
+
+                </t>
+
+
+
+
+
+		</t>
+
+	</t>
+
+</templates>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<openerp>
+    <data>
+
+        <report
+            id="action_report_pos_session_summary_ext"
+            string="Session Summary Small"
+            model="pos.session"
+            report_type="qweb-pdf"
+            name="pos_report_session.report_session_summary_ext"
+            file="pos_report_session.report_session_summary_ext"
+         />
+
+        <record id="action_report_pos_session_summary_ext" model="ir.actions.report.xml">
+            <field name="paperformat_id" ref="pos_report_session.paperformat_possession"/>
+        </record>
+
+    </data>
+</openerp>

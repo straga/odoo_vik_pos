@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+ <!-- Advance Discount -->
+
+        <record id="pos_adv_discount_tree_view" model="ir.ui.view">
+            <field name="name">pos.adv_discount.tree</field>
+            <field name="model">pos.adv_discount</field>
+            <field name="arch" type="xml">
+                <tree string="Advance Discount">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="pos_adv_discount_form_view" model="ir.ui.view">
+            <field name="name">pos.adv_discount.form</field>
+            <field name="model">pos.adv_discount</field>
+            <field name="arch" type="xml">
+                <form string="Advance Discount">
+                    <sheet>
+
+                         <group colspan="4">
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="start_date" on_change="on_change_date(start_date,end_date)"/>
+                            <field name="end_date" placeholder="no end day" on_change="on_change_date(start_date,end_date)"/>
+                        </group>
+                        <group>
+
+                             <field name="journal_id"/>
+                            <field name="active"/>
+                        </group>
+
+                        </group>
+
+                        <notebook>
+
+            <!-- Customer Tab -->
+                            <page string="Customer">
+                                    <group>
+                                        <field name="cfilter" string="Customer of" widget='radio' />
+                                    </group>
+                               <div attrs="{'invisible': [('cfilter','in',('all',False, []))]}" >
+
+                                <separator string="Select Customers"/>
+                                <field name="partner">
+                                    <form string="Customer Mapping">
+                                        <field name="name"/>
+                                    </form>
+                                    <tree string="Customer Mapping" editable="top">
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                                </div>
+                            </page>
+
+
+            <!-- Configuration Tab -->
+                            <page string="Configuration">
+                                <group>
+                                        <field name="discount_type" string="Select Discount" widget='radio' on_change="on_change_discount_type(discount_type)"/>
+                                </group>
+
+
+                  <div attrs="{'invisible': [('discount_type','not in',('simple_dsc'))]}">
+
+                                <group>
+
+                                        <field name="pfilter" string="Select type" widget='radio' />
+                                        <separator/>
+                                        <separator/>
+
+                                        <field name="value_method" widget='radio' on_change="on_change_value_method(value_method)" help="\ Percent 0ff - ok  \ Amount 0ff - If you require this feature please contact your system administrator '"/>
+                                        <field name="amount" on_change="on_change_amount(amount)" attrs="{'readonly': [('value_method', '=', 'amount')]}" />
+
+                                </group>
+
+
+
+                                <div attrs="{'invisible': [('pfilter','in',('all','category','special',False, []))]}">
+
+                                <separator string="Select Products"/>
+                                <field name="product"  domain="['|',['type','=','sale'],['available_in_pos','&lt;&gt;',False] ]" >
+                                    <tree string="Product Mapping" editable="top">
+                                        <field name="name"/>
+                                    </tree>
+                                    <form string="Product Mapping">
+                                        <field name="name"/>
+                                    </form>
+                                </field>
+
+                                 </div>
+
+                                <div  attrs="{'invisible': [('pfilter','in',('all','product','special', False, []))]}">
+                                <separator string="Select Categories"/>
+                                <field name="pcategory" >
+                                    <tree string="Product Mapping" editable="top">
+                                        <field name="name"/>
+                                    </tree>
+                                    <form string="Product Mapping">
+                                        <field name="name"/>
+                                    </form>
+                                </field>
+
+                                </div>
+
+
+                  </div>
+
+                  <div attrs="{'invisible': [('discount_type','not in',('BuyXforpriceY'))]}">
+                        <separator string="Select Options"/>
+                        <group>
+                            <field name="product_1" string="Product"  domain="['|',['type','=','sale'],['available_in_pos','&lt;&gt;',False] ]"/>
+                            <field name="pro_val_1" string="Buy amount"  />
+                            <field name="pro_val_2" string="Paid amount"  />
+                        </group>
+                  </div>
+
+
+            <!-- Buy X for the fixed price Y  -->
+                  <div attrs="{'invisible': [('discount_type','not in',('BuyXforFixedpriceY'))]}">
+                        <separator string="Select Options"/>
+                        <group>
+                            <field name="product_1" string="Product"  domain="['|',['type','=','sale'],['available_in_pos','&lt;&gt;',False] ]"/>
+                            <field name="pro_val_1" string="Buy amount"  />
+                            <field name="pro_val_2" string="Price amount"  />
+                        </group>
+                    </div>
+
+
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+        <record id="pos_adv_discount_form_action" model="ir.actions.act_window">
+            <field name="name">POS Advance discounts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pos.adv_discount</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="pos_adv_discount_tree_view"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click to add a new POS Advance discounts.
+              </p><p>
+                You must define a POS Advance discounts.
+              </p>
+            </field>
+        </record>
+
+
+        <menuitem action="pos_adv_discount_form_action"
+            name="Discounts"
+            id="menu_pos_adv_discount_form_action"
+            parent="point_of_sale.menu_point_config_product"
+            groups="point_of_sale.group_pos_manager"
+            sequence="25"/>
+
+
+    </data>
+</openerp>

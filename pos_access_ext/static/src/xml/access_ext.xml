@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+  <t t-name="AccessPopupWidget">
+      <div class="modal-dialog">
+          <div class="popup popup-help">
+              <p class="message">Option is not available, Enter manager code:</p>
+              <label class="mode" name="mode" > </label>
+
+                <div class="ex_content">
+                    <div class="input-detail">
+                        <span class="label">Code:</span>
+                        <input type="password" class="input-field" name="password"></input>
+                    </div>
+                    <div class="input-detail">
+                        <span class="label" name="label_value">Value</span>
+                        <input type="text" class="input-field" name="value"></input>
+                    </div>
+                </div>
+
+              <div class="button button_ok">Change</div>
+              <div class="button button_close">Close</div>
+
+          </div>
+      </div>
+  </t>
+</templates>

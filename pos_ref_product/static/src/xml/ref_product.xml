@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+
+
+
+    <t t-extend="Product">
+		<t t-jquery=".product-img" t-operation="append">
+			<span t-if="product.default_code" t-attf-class="ref-tag">
+				<t t-esc="product.default_code"/>
+			</span>
+		</t>
+	</t>
+
+
+</templates>

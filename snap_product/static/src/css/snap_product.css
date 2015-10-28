@@ -1,0 +1,20 @@
+/* --- pos Specific CSS --- */
+
+.pos .product .snap-tag {
+    position: absolute;
+    top: 25px;
+    left: 5px;
+    vertical-align: top;
+    color: #000000;
+    line-height: 13px;
+    background: #8CCB88;
+    padding: 2px 5px;
+    border-radius: 50%;
+/* font-weight: bold; */
+/* border: 1px solid #666; */
+    font-size: 8px;
+}
+
+
+
+

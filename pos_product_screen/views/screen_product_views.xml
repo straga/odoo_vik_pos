@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- view specific to search -->
+
+        <record id="product_template_search_view_screen" model="ir.ui.view">
+            <field name="name">product.template.search.screen.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <filter name="filter_to_sell" position="after">
+                   <filter name="filter_to_pos_screen" string="Shows POS Screen" icon="terp-accessories-archiver+" domain="[('pos_screen', '=', 1)]"/>
+                </filter>
+            </field>
+        </record>
+
+
+
+        <!-- view specific to product.template -->
+        <record id="product_template_screen_only_form_view" model="ir.ui.view">
+            <field name="name">product.template.screen.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <field name="active" position="before">
+                    <field name="pos_screen"/>
+
+                </field>
+
+            </field>
+        </record>
+
+
+
+         <!-- product product -->
+
+        <record id="product_screen_normal_form_view" model="ir.ui.view">
+            <field name="name">product.product.screen.product.form</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="active" position="before">
+                    <field name="pos_screen"/>
+                </field>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </data>
+</openerp>
+
+
+
+
+

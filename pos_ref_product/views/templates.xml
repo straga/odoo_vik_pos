@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="index" inherit_id='point_of_sale.index' name="ref product Index">&lt;!DOCTYPE html&gt;
+            <xpath expr="//link[@id='pos-stylesheet']" position="after">
+                <link rel="stylesheet" href="/pos_ref_product/static/src/css/ref_product.css" />
+            </xpath>
+        </template>
+    </data>
+</openerp>

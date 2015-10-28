@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_pos_config_access_form">
+            <field name="name">pos.config.acc.form.view.inherit</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_config_form"></field>
+            <field name="arch" type="xml">
+                <sheet position='inside'>
+                    <group string="Manager access code">
+                        <field name="secret_access" />
+                    </group>
+                </sheet>
+            </field>
+        </record>
+
+    </data>
+</openerp>

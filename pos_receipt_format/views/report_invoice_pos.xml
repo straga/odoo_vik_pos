@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+
+
+
+
+<template id="style">
+
+.vb {
+    border-right: 1px solid #000000 !important;
+     border-left: 1px solid #000000 !important;
+
+    }
+
+
+
+.h10 { font-size: 10px; }
+
+.h11 { font-size: 11px; }
+
+
+.mbt0 { margin-bottom: 0px !important;
+ }
+
+
+</template>
+
+
+<template id="report_invoice_document_pos">
+ <!--  <t t-call="report.external_layout"> -->
+    <!-- Multicompany -->
+    <t t-if="o and 'company_id' in o">
+        <t t-set="company" t-value="o.company_id"/>
+    </t>
+    <t t-if="not o or not 'company_id' in o">
+        <t t-set="company" t-value="res_company"/>
+    </t>
+
+        <div class="header">
+
+            <div class="row">
+
+
+                <div class="col-xs-8"  >
+
+                    <table class="table table-nonfluid mbt0" style="margin-bottom: 0px" >
+                <body>
+
+                    <tr  >
+
+                                <td class="text-left h12" >
+                                    <strong>Area: </strong> <span class="small" t-field="company.area" />
+                                </td>
+
+                                <td class="text-left h12" >
+                                   <strong>Route: </strong> <span class="small" t-field="company.route"/>
+                                </td>
+
+                                <td class="text-left h12" >
+                                     <strong>Slsnn:  </strong> <span class="small" t-field="company.slsnn" />
+                                </td>
+
+                                <td class="text-left h12" >
+                                    <strong>Cbib:  </strong> <span class="small" t-field="company.cbib" />
+                                </td>
+
+                                            <td  class="text-right h12">
+
+                                <strong>Date: </strong> <span class="small" t-esc="time.strftime('%Y-%m-%d') "/> <span class="small" t-esc="time.strftime('%H:%M')"/>
+                        </td>
+
+
+
+                    </tr>
+  </body>
+ </table>
+
+                </div>
+
+
+
+                <div class="col-xs-4 h12 text-right">
+
+                    <ul class="list-inline" >
+                        <li>Page:</li>
+                         <li><span class="page"/></li>
+                        <li>/</li>
+                        <li><span class="topage"/></li>
+                    </ul>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="row zero_min_height">
+                <div class="col-xs-12">
+                    <div style="border-bottom: 1px solid black;"></div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2 t-esc="company.name"/>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+             <div class="col-xs-12 col-xs-offset-5 text-left">
+                <div t-field="company.partner_id"
+                    t-field-options='{"widget": "contact", "fields": ["address", "phone", "fax" ], "no_marker": true}'
+                   />
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <div class="page">
+
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h2>
+                        <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Invoice</span>
+                        <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                        <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                        <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                        <span t-if="o.type == 'out_refund'">Refund</span>
+                        <span t-if="o.type == 'in_refund'">Supplier Refund</span>
+                        <span t-if="o.type == 'in_invoice'">Supplier Invoice</span>
+
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="row" >
+                <div class="col-xs-8  text-left">
+                    <address t-field="o.partner_id"
+                        t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />
+                    <span t-field="o.partner_id.vat"/>
+                </div>
+
+                <div class="col-xs-4  text-left">
+                     <div class="row">
+                         <strong>INVC# </strong><span t-field="o.number"/>
+                     </div>
+
+                    <div class="row">
+                        <strong>CUST# </strong> <span t-field="o.partner_id.ref"/>
+                     </div>
+
+                    <div class="row">
+                        <strong>Source: </strong><span t-field="o.origin"/>
+
+                     </div>
+                                        <div class="row">
+                        <strong>Date Invoice: </strong><span t-field="o.date_invoice"/>
+
+                     </div>
+
+ <!--     <div class="col-md-2 text-right" t-if="o.date_invoice"> Date:  <span t-field="o.date_invoice" />    </div> -->
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 text-center myb2">
+                    <h2>
+                        <span> Non dex Sale</span>
+                    </h2>
+                </div>
+            </div>
+
+
+            <table class="table table-condensed">
+                <thead>
+
+                            <tr>
+                                <th colspan="4"></th>
+                                <th  colspan="2" class=" text-center" style="font-size: 11px; border-left: 1px solid black " >Retail</th>
+                                <th  colspan="3" class=" text-center" style="font-size: 11px; border-left: 1px solid black; border-right: 1px solid black ">Unit</th>
+                                <th  colspan="3" class=" text-center" style="font-size: 11px; border-right: 1px solid black">Extended</th>
+
+                            </tr>
+                            <tr>
+                                <th style="font-size: 11px" >Item</th>
+                                <th style="font-size: 11px" >Description</th>
+                                <th style="font-size: 11px" >UPC</th>
+                                <th style="font-size: 11px" >Unit</th>
+                                <th class="text-right"  style="font-size: 11px">Amount</th>
+                                <th class="text-right"  style="font-size: 11px">Extended</th>
+                                <th class="text-right"  style="font-size: 11px">Cost</th>
+                                <th class="text-right"  style="font-size: 11px">Promo</th>
+                                <th class="text-right"  style="font-size: 11px">Amount</th>
+                                <th class="text-right"  style="font-size: 11px">Cost</th>
+                                <th class="text-right"  style="font-size: 11px">Promo</th>
+                                <th class="text-right"  style="font-size: 11px">Amount</th>
+                            </tr>
+
+
+                </thead>
+
+                  <tbody>
+
+
+                      <tr t-foreach="o.invoice_line" t-as="l">
+
+                           <td style="font-size: 10px">
+                               <span t-field="l.product_id.default_code" />
+                           </td>
+
+                           <td style="font-size: 10px">
+                               <span t-field="l.product_id.name"/>
+                           </td>
+
+                           <td style="font-size: 10px">
+                               <span t-field="l.product_id.ean13"/>
+                           </td>
+
+                          <!-- QTY-->
+
+                          <td style="font-size: 10px">
+                                <span t-esc="get_lot_qty(l)"  style="font-size: 10px" />
+                                <span t-field="l.uos_id"  groups="product.group_uom"   style="font-size: 10px"/>
+                          </td>
+
+                          <!-- RETAIL -->
+
+                          <td class="text-right "  style="font-size: 10px">
+                               <span t-esc="get_lot_retail_price(l)"
+                                    t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td >
+
+                          <td class="text-right" style="font-size: 10px">
+                                <span t-esc="get_lot_qty(l)*get_lot_retail_price(l)"
+                                    t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td>
+
+
+                          <!-- UNIT-->
+
+                          <td class="text-right" style="font-size: 10px">
+                                <span t-esc="get_lot_cost_unit(l)"
+                                    t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td>
+
+                          <td class="text-right" style="font-size: 10px">
+                                <span t-esc="get_lot_promo_unit(l.price_subtotal,l.quantity,l)"
+                                    t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td>
+
+                          <td class="text-right" style="font-size: 10px">
+                                <span t-esc="get_lot_amount_unit(l.price_subtotal,l.quantity,l)"
+                                    t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td>
+
+
+                          <!-- EXTENDED-->
+
+                          <td class="text-right" style="font-size: 10px">
+                                <span t-esc="get_lot_qty(l)*get_lot_cost_unit(l)"
+                                    t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td>
+
+                          <td class="text-right" style="font-size: 10px">
+                                <span t-esc="get_lot_qty(l)*get_lot_promo_unit(l.price_subtotal,l.quantity,l)"
+                                    t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td>
+
+                          <td class="text-right" style="font-size: 10px">
+                                <span t-field="l.price_subtotal"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                            </td>
+
+
+
+                    </tr>
+                     <tr class="border-black">
+
+
+                         <td class="text-left">
+                                <strong t-esc="get_item_total(o.invoice_line)"/>
+                           </td>
+                           <td class="emptyrow"></td>
+                           <td class="emptyrow"></td>
+
+                         <td class="text-left">
+                                <strong t-esc="get_quant_total(o.invoice_line)"/>
+                         </td>
+
+
+
+                         <td class="emptyrow"></td>
+
+
+                         <td class="text-right">
+                                <strong t-esc="get_retail_ext(o.invoice_line)"
+                                      t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                         </td>
+
+
+                         <td class="emptyrow"></td>
+                         <td class="emptyrow"></td>
+                         <td class="emptyrow"></td>
+
+                         <td class="text-right">
+                                <strong t-esc="get_ext_cost(o.invoice_line)"
+                                      t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                         </td>
+
+                         <td class="text-right">
+                                <strong t-esc="get_ext_promo(o.invoice_line)"
+                                      t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                         </td>
+
+
+                          <td class="text-right">
+                                <strong t-esc="get_ext_amount(o.invoice_line)"
+                                      t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                          </td>
+
+                    </tr>
+                  </tbody>
+
+            </table>
+
+
+
+                        <table class="table table-condensed">
+
+                            <tbody>
+                                <tr>
+                                    <td class="emptyrow"></td>
+                                    <td class="highrow text-right"><strong>Sales:</strong></td>
+                                    <td class="highrow text-right">
+
+                                          <strong t-esc="get_ext_cost(o.invoice_line)"
+                                      t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="emptyrow"></td>
+                                    <td class="emptyrow text-right"><strong>Promotions:</strong></td>
+                                    <td class="emptyrow text-right">
+
+                                        <strong t-esc="get_ext_promo(o.invoice_line)"
+                                      t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+
+
+                                    </td>
+                                </tr>
+                                <tr class="border-black">
+
+                                    <td class="emptyrow"></td>
+                                    <td class="emptyrow text-right"><strong>Charge Total Amt. Due:</strong></td>
+                                    <td class="emptyrow text-right">
+
+                                            <strong t-esc="get_ext_amount(o.invoice_line)"
+                                      t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+            <p >
+                <strong>Signature:</strong><strong>____________________________</strong>  <strong>Signature:</strong> <strong>_________________________</strong>
+
+            </p>
+
+
+        </div>
+ <!--   </t> -->
+</template>
+
+<template id="report_invoice_pos">
+    <t t-call="report.html_container">
+        <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'pos_receipt_format.report_invoice_document_pos')"/>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

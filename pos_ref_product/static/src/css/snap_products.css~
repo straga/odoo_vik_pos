@@ -1,0 +1,45 @@
+/* --- pos Specific CSS --- */
+
+
+
+.subtotal_n .name_s {float: left  }
+.discount_n .name_s {float: left }
+.taxes_n .name_s {float: left }
+.line .total_n .name_s {float: left }
+
+
+.subtotal_n .value_s {float: right }
+.discount_n .value_s {float: right }
+.taxes_n .value_s {float: right }
+.line .total_n .value_s {float: right }
+
+.spacer {
+    display: inline-block;
+    width: 10px;
+}
+
+.show_disc .line {
+
+
+left: 15px;
+font-size: 16px;
+text-align: right;
+font-weight: bold;
+position: relative;
+width: 100%;
+bottom: -10px;
+
+}
+
+.show_disc .line.empty {
+
+
+left: 15px;
+font-size: 16px;
+text-align: right;
+font-weight: bold;
+position: relative;
+width: 100%;
+bottom: -10px;
+
+}

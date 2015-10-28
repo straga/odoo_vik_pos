@@ -1,0 +1,43 @@
+/* --- pos Specific CSS --- */
+
+
+.mode{
+	font-family: Gill Sans, Verdana;
+	font-size: 16px;
+	line-height: 14px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: bold;
+
+}
+
+
+.error{
+    background-color: #FFAEAE;
+}
+
+
+
+.input-detail{
+    text-align: left;
+    padding: 7px;
+    outline: none;
+
+    display: block;
+    margin: 0px 0px 15px 0px;
+
+    display: inline-block;
+
+}
+.input-field{
+   vertical-align: middle;
+    display: inline-block;
+}
+
+
+
+
+
+
+
+

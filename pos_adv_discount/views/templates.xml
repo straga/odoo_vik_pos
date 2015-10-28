@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <template id="index" inherit_id='point_of_sale.index' name="POS Advance Discount Index">&lt;!DOCTYPE html&gt;
+            <xpath expr="//link[@id='pos-stylesheet']" position="after">
+                <link rel="stylesheet" href="/pos_adv_discount/static/src/css/adv_discount.css" />
+            </xpath>
+        </template>
+
+        <template id="assets_frontend" inherit_id="web.assets_common">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_adv_discount/static/src/js/models.js"></script>
+              <script type="text/javascript" src="/pos_adv_discount/static/src/js/adv_discount.js"></script>
+              <script type="text/javascript" src="/pos_adv_discount/static/src/js/main.js"></script>
+
+          </xpath>
+        </template>
+
+         <template id="assets_backend" inherit_id="web.assets_backend">
+          <xpath expr="." position="inside">
+              <script type="text/javascript" src="/pos_adv_discount/static/src/js/pos.js"></script>
+          </xpath>
+         </template>
+    </data>
+</openerp>

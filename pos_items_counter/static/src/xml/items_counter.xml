@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!-- Extendet Widget OrderWidget search clas orderlines after add my divs.  -->
+
+    <t t-extend="OrderWidget">
+        <t t-jquery=".orderlines" t-operation="after">
+            <div t-attf-class="polines #{orderlines.length === 0 ? 'emp' : ''}">
+
+                  <div class='category'>
+                          <div class='total'> Empty  </div>
+                  </div>
+            </div>
+        </t>
+    </t>
+
+
+</templates>
