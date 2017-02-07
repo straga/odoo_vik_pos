@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 {
     'name': 'POS access extended',
     'version': '1.0',
@@ -17,7 +16,11 @@ This module adds constol access to Discount and Price features to the Point of S
 """,
     'author': 'Viktor Vorobjov',
     'depends': ['point_of_sale'],
+
+    'license': 'LGPL-3',
     'website': 'https://straga.github.io',
+    'support': 'vostraga@gmail.com',
+
     'data': [
         'views/templates.xml',
         'views/views.xml',
