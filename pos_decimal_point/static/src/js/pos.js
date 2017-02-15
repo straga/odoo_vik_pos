@@ -12,11 +12,13 @@ function pos_descimal_md(instance, module){
 
          set_amount: function(value){
 
-             var l_dec = value.length;
+             //var l_dec = value.length;
+             var l_dec = value.toString();
 
-             if(l_dec > 0) {
 
-                var valr = value.replace(/\./g, "")
+             if(l_dec.length > 0) {
+
+                var valr = l_dec.replace(/\./g, "")
 
                 var val_len = valr.length;
                 var value1 = valr.slice(0,-2);
