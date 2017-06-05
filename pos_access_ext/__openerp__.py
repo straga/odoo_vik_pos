@@ -21,8 +21,7 @@
 
     "depends": [
         "point_of_sale",
-        "pos_adv_discount"
-
+  
     ],
     "external_dependencies": {"python": [], "bin": []},
     "data": [
