@@ -4,9 +4,10 @@
     "summary": """POS Advance Discount for the Point of Sale""",
     "category": "Point of Sale",
     "images": ['static/description/icon.png'],
-    "version": "1.0.0",
+    "version": "2.0.0",
 
     "description": """
+    UPDATE: add discount manual
 
     =======================
 
