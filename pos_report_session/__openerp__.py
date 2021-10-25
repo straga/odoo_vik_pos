@@ -10,7 +10,7 @@
     
     """,
 
-    'license': 'LGPL-3',
+    'license': 'AGPL-3',
     'website': 'https://straga.github.io',
     'support': 'vostraga@gmail.com',
 
